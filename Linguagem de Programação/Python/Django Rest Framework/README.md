@@ -1,11 +1,13 @@
 # Introdução
 Essa documentação tem como objetivo resumir informações para pesquisas rápidas, caso seja necessário um maior detalhamento, recomenda-se acessar o link no título de cada tema.
 
-# Resumo Prático
-O resumo prático contém uma lista de palavras chaves com instruções que devem ser seguidas na ordem para a construção de um aplicativo com esse framework:
+# Palavras Chaves
+Uma lista de palavras chaves que estão associados diretamente a teoria e prática do framework:
 - Modelos
-- Serializadores do Modelo
-- 
+- Autenticação e Autorização
+- Serializadores
+- Views, Mixins/Generics e ViewSets
+- Routers
 
 # [Testes](https://www.django-rest-framework.org/api-guide/testing/#explicitly-encoding-the-request-body)
 ## APIRequestFactory
@@ -19,6 +21,8 @@ from rest_framework.test import APIRequestFactory
 factory = APIRequestFactory()
 request = factory.post('/notes/', json.dumps({'title': 'new idea'}), format='json', content_type='application/json')
 ```
+Ela costuma retornar a requisição e não a resposta.
+
 - Métodos que criam um corpo de solicitação, como post, put e patch, incluem um argumento `format`, o que facilita a geração de solicitações usando um tipo de conteúdo diferente de dados de formulário multipartes.
 - Se você precisar codificar explicitamente o corpo da solicitação, você pode fazer isso definindo o sinalizador `content_type`.
 
@@ -28,7 +32,7 @@ Ao testar visualizações diretamente usando uma fábrica de solicitações, ger
 A documentação explicita mais detalhes sobre autenticação por tokens.
 
 ## APIClient
-A classe `ÀPIClient` extende da classe `Client` do Django Padrão. Ela costuma retorna a responsa de uma requisição.
+A classe `ÀPIClient` extende da classe `Client` do Django Padrão. Ela costuma retorna a resposta de uma requisição.
 
 ```python
 from rest_framework.test import APIClient
